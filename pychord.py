@@ -5,7 +5,6 @@ notes = (['a', 'gss', 'bff'], ['as', 'bf'], ['b', 'cf', 'ass'], ['bs', 'c', 'dff
 chords = {'maj' : [[1, 0], [3, 4], [5, 7]], 'min' : [[1, 0], [3, 3], [5, 7]],
           'dim' : [[1, 0], [3, 3], [5, 6]], 'aug' : [[1, 0], [3, 4], [5, 8]]}
 
-
 def chord(one, quality):
     '''chord(one : str, quality : str) -> [str]
     Given a starting note (of the format found in the notes constant) and a quality
