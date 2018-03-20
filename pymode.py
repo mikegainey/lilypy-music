@@ -1,3 +1,4 @@
+# define constants
 letters = 'a', 'b', 'c', 'd', 'e', 'f', 'g'
 notes = (['a', 'gss', 'bff'], ['as', 'bf'], ['b', 'cf', 'ass'], ['bs', 'c', 'dff'], ['cs', 'df'], ['d', 'css', 'eff'],
          ['ds', 'ef'], ['e', 'ff', 'dss'], ['es', 'f', 'gff'], ['fs', 'gf'], ['g', 'fss', 'aff'], ['gs', 'af'])
@@ -5,6 +6,10 @@ major_scale = 2, 2, 1, 2, 2, 2, 1
 
 
 def mode(one, mode):
+    '''mode(one : str, mode : int) -> [str]
+    Given a starting note (of the format found in the notes constant) and a mode
+    (where 1 = Ionian, 2 = Dorian, etc.), return a list representing the scale
+    starting on the given starting note.'''
 
     pattern = []
     for mode_x in range(7):
@@ -12,16 +17,16 @@ def mode(one, mode):
         pattern.append(step)
 
     # is the argument (one) a valid note?
-    for note in notes:
+    for index, note in enumerate(notes):
         if one in note:
             one_note = one                             # the note
             one_letter = one[0]                        # just the letter part
             one_letter_x = letters.index(one_letter)   # the index of the letter in letters
-            one_index = notes.index(note)              # the index of the note in notes
+            one_index = index
+            # one_index = notes.index(note)              # the index of the note in notes
             break
     else:
-        print one, 'The note entered was not in my list.'
-        print
+        print(f"The note entered is not in the notes constant:  {one}\n")
         return
 
     scale = []
