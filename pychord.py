@@ -15,10 +15,10 @@ def chord(one, quality):
     # find the note letter and the index in the notes list
     for note in notes:
         if one in note:
-            one_note = one								# the note
-            one_letter = one[0]							# just the letter part
-            one_letter_x = letters.index(one_letter)	# the index of the letter in letters
-            one_index = notes.index(note)				# the index of the note in notes
+            one_note = one                                                              # the note
+            one_letter = one[0]                                                 # just the letter part
+            one_letter_x = letters.index(one_letter)    # the index of the letter in letters
+            one_index = notes.index(note)                               # the index of the note in notes
             break
 
     # make a list with degrees (1, 3, 5) and halfstep intervals (0, 4, 7)
@@ -33,8 +33,8 @@ def chord(one, quality):
         halfstep_interval = (one_index + degrees[note][1]) % 12
         pitch_class = notes[halfstep_interval]
 
-        for pc in range(len(pitch_class)):				# check each note of the pitch class
-            if chord_letter == pitch_class[pc][0]:		# do the note letters match?
-                chord.append(pitch_class[pc])			# append the note to the output list
+        for pc in range(len(pitch_class)):                              # check each note of the pitch class
+            if chord_letter == pitch_class[pc][0]:              # do the note letters match?
+                chord.append(pitch_class[pc])                   # append the note to the output list
 
     return chord

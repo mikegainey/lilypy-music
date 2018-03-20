@@ -29,7 +29,7 @@ for s in scale_list:                # s = current scale
         else:
             music += note_list[deg - 1] + " "
     music += "\n"
-    
+
 music += '}'
 
 print music

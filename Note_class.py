@@ -7,7 +7,7 @@ class Note:
         self.pitch_mode = pitch_mod
         self.pitch_oct = pitch_oct
         self.length = length
-        
+
 
     def __str__(self):
         s = ''
