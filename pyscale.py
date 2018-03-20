@@ -11,18 +11,21 @@ major_scale = (2, 2, 1, 2, 2, 2, 1)
 def scale(one):
 
     scale = []
+    ''' scale(one : str) -> [str]
+        Given a starting note (of the format found in letters), return a list representing
+        the major scale beginning on the starting note.
+    '''
 
     # is the argument (one) a valid note?
-    for note in notes:
+    for index, note in enumerate(notes):
         if one in note:
             one_note = one                             # the note
             one_letter = one[0]                        # just the letter part
             one_letter_x = letters.index(one_letter)   # the index of the letter in letters
-            one_index = notes.index(note)              # the index of the note in notes
+            one_index = index
             break
     else:
-        print one, 'The note entered was not in my list.'
-        print
+        print(f"The note entered was not in the notes constant:  {one}\n")
         return
 
 
