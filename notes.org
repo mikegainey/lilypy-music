@@ -24,3 +24,8 @@
 
 * main program: 
 - 
+* Potential classes
+- Note: includes pitch, octave, duration, articulation
+- Measure: a list of Notes
+  - methods that create a measure of Notes in a chord or pattern
+- 
