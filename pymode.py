@@ -37,4 +37,6 @@ def mode(one, mode):
         for note in pitch_class:        # check each note of the pitch class
             if scale_letter == note[0]: # do the note letters match?
                 scale.append(note)      # append the note to the output list
+                break
+
     return scale
