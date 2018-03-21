@@ -9,13 +9,11 @@ major_scale = (2, 2, 1, 2, 2, 2, 1)
 
 
 def scale(one):
+    '''Return a major scale, given a starting note.
 
-    scale = []
-    ''' scale(one : str) -> [str]
-        Given a starting note (of the format found in letters), return a list representing
-        the major scale beginning on the starting note.
+    Given a starting note (of the format found in letters), return a list representing
+    the major scale beginning on the starting note.
     '''
-
     # is the argument (one) a valid note?
     for index, note in enumerate(notes):
         if one in note:
@@ -28,7 +26,7 @@ def scale(one):
         print(f"Error: The input note was not recognized:  '{one}'\n")
         return None
 
-
+    scale = []
     for degree in range(8):
         halfstep_span = sum(major_scale[:degree])        # number of halfsteps to each scale degree
         pitch_class_x = (one_index + halfstep_span) % 12 # index of the pitch class in notes
