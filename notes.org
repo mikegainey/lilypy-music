@@ -1,0 +1,26 @@
+* Music Program Ideas - Functions
+
+** interval - Given a starting note, an interval, and a direction (up or down), 
+- produce a note the specified interval from the starting note
+- interval(root, direction) -- return a note a certain interval away of the given note; interval(af, m3) would return 'cf' 
+
+** mode – Given a starting note and a mode,
+- produce a list of the notes in a diatonic mode
+- scale(root, type) -- return a list of notes in a scale; scald(af, maj) would return ['af', 'bf', 'c', 'df', 'ef', 'f', 'gf'] 
+
+** chord – Given a root note and a chord quality,
+- produce a list of the notes in the chord
+- chord(root, type) -- return a list of notes in a chord; chord(af, maj) would return ['af', 'c', 'ef'] 
+
+** pattern – Given a mode, a pattern of scale degrees, and a list of starting notes,
+- for each starting note, produce lilypond notation of the pattern in the given mode
+- needs improvement: handling octaves
+
+
+* lilypond functions: 
+- insert barlines 
+- insert octive designations 
+- 
+
+* main program: 
+- 
