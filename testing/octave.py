@@ -18,18 +18,58 @@ def newOct(fst, snd):
 
     if len(fLetters) < len(rLetters):
         if 'c' in fLetters[1:]:
-            return "'"
+            return "up"
         else:
             return " "
     else:
         if 'c' in rLetters[:-1] and len(rLetters) >= 2:
-            return ","
+            return "down"
         else:
             return " "
 
-print(letters)
+def oct2(fst, snd):
+    letters = list("abcdefg")
+    fstx = letters.index(fst)
+    sndx = letters.index(snd)
+    diff = sndx - fstx
+
+    if diff > 0:
+        if abs(diff) <= 3:
+            # return(f"{fst} up to {snd}")
+            if fstx <= 1 and sndx >= 2:
+                return "up oct"
+            else:
+                return "up but not to a new octave"
+        else:
+            # return(f"{fst} down to {snd}")
+            if fstx == 2:
+                return "down oct"
+            else:
+                return "down but not to a new octave"
+    elif diff < 0:
+        if abs(diff) <= 3:
+            # return(f"{fst} down to {snd}")
+            if fstx >= 2 and sndx <= 1:
+                return "down oct"
+            else:
+                return "down but not to a new octave"
+        else:
+            # return(f"{fst} up to {snd}")
+            if sndx >= 2: # e up to a
+                return "up oct"
+            else:
+                return "up but not to a new octave"
+    else: # diff == 0
+        return("repeated note")
+
+
+
+# 0 1 2 3 4 5 6
+# a b c d e f g
+letters = list("abcdefg")
 for fst in letters:
+    print(letters)
     for snd in letters:
-        print(f"{newOct(fst, snd)}", end=" ")
-    print()
+        print(f"{fst} to {snd} : {oct2(fst, snd)}")
+    input()
 
