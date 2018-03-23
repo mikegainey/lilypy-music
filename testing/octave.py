@@ -1,9 +1,9 @@
 # figure out how to know if the absolute octave has changed and in which direction
 # Given two notes, determine if c is crossed and in which direction
 # assume the smaller interval (2nd instead of 7th, 3rd instead of 6th, 4th instead of 5th)
-# it works
+# diff_oct1 and diff_oct2 are alternate implementations that do the same thing and both work
 
-def newOct(fst, snd):
+def diff_oct1(fst, snd):
     letters = list("abcdefg")
     fstx = letters.index(fst)
     letters = letters[fstx:] + letters[:fstx]
@@ -27,7 +27,8 @@ def newOct(fst, snd):
         else:
             return " "
 
-def oct2(fst, snd):
+
+def diff_oct2(fst, snd):
     letters = list("abcdefg")
     fstx = letters.index(fst)
     sndx = letters.index(snd)
@@ -35,33 +36,28 @@ def oct2(fst, snd):
 
     if diff > 0:
         if abs(diff) <= 3:
-            # return(f"{fst} up to {snd}")
             if fstx <= 1 and sndx >= 2:
                 return "up oct"
             else:
                 return "up but not to a new octave"
         else:
-            # return(f"{fst} down to {snd}")
             if fstx == 2:
                 return "down oct"
             else:
                 return "down but not to a new octave"
     elif diff < 0:
         if abs(diff) <= 3:
-            # return(f"{fst} down to {snd}")
             if fstx >= 2 and sndx <= 1:
                 return "down oct"
             else:
                 return "down but not to a new octave"
         else:
-            # return(f"{fst} up to {snd}")
             if sndx >= 2: # e up to a
                 return "up oct"
             else:
                 return "up but not to a new octave"
     else: # diff == 0
         return("repeated note")
-
 
 
 # 0 1 2 3 4 5 6
