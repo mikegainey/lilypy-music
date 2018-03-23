@@ -9,11 +9,15 @@ major_scale = (2, 2, 1, 2, 2, 2, 1)
 
 
 def scale(one):
-    '''Return a major scale, given a starting note.
+    """Return a major scale, given a starting note.
 
     Given a starting note (of the format found in letters), return a list representing
     the major scale beginning on the starting note.
-    '''
+    >>> scale('a')
+    ['a', 'b', 'cs', 'd', 'e', 'fs', 'gs', 'a']
+    >>> scale('ef')
+    ['ef', 'f', 'g', 'af', 'bf', 'c', 'd', 'ef']
+    """
     # is the argument (one) a valid note?
     for index, note in enumerate(notes):
         if one in note:

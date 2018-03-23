@@ -6,10 +6,17 @@ major_scale = (2, 2, 1, 2, 2, 2, 1)
 
 
 def mode(one, mode):
-    '''mode(one : str, mode : int) -> [str]
+    """mode(one : str, mode : int) -> [str]
     Given a starting note (of the format found in the notes constant) and a mode
     (where 1 = Ionian, 2 = Dorian, etc.), return a list representing the scale
-    starting on the given starting note.'''
+    starting on the given starting note.
+    >>> mode('bf', 1) # B-flat major
+    ['bf', 'c', 'd', 'ef', 'f', 'g', 'a', 'bf']
+    >>> mode('c', 6) # C minor
+    ['c', 'd', 'ef', 'f', 'g', 'af', 'bf', 'c']
+    >>> mode('e', 5) # E mixolydian
+    ['e', 'fs', 'gs', 'a', 'b', 'cs', 'd', 'e']
+    """
 
     split = mode - 1
     pattern = major_scale[split:] + major_scale[:split]

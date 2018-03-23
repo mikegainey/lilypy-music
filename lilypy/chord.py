@@ -3,15 +3,22 @@ letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g')
 notes = (['a', 'gss', 'bff'], ['as', 'bf'], ['b', 'cf', 'ass'], ['bs', 'c', 'dff'], ['cs', 'df'], ['d', 'css', 'eff'],
          ['ds', 'ef'], ['e', 'ff', 'dss'], ['es', 'f', 'gff'], ['fs', 'gf'], ['g', 'fss', 'aff'], ['gs', 'af'])
 chords = {'maj' : [[1, 0], [3, 4], [5, 7]], 'min' : [[1, 0], [3, 3], [5, 7]],
-          'dim' : [[1, 0], [3, 3], [5, 6]], 'aug' : [[1, 0], [3, 4], [5, 8]]}
+          'dim' : [[1, 0], [3, 3], [5, 6]], 'aug' : [[1, 0], [3, 4], [5, 8]],
+          'MM7' : [[1, 0], [3, 4], [5, 7], [7, 11]], 'Mm7' : [[1, 0], [3, 4], [5, 7], [7, 10]],
+          'mm7' : [[1, 0], [3, 3], [5, 7], [7, 10]], 'mM7' : [[1, 0], [3, 3], [5, 7], [7, 11]]}
 
 
 def chord(one, quality):
-    '''chord(one : str, quality : str) -> [str]
+    """chord(one : str, quality : str) -> [str]
     Given a starting note (of the format found in the notes constant) and a quality
     (a key in the chords dictionary), return a list representing the notes of the chord.
-    '''
-
+    >>> chord('a', 'maj')
+    ['a', 'cs', 'e']
+    >>> chord('c', 'mm7')
+    ['c', 'ef', 'g', 'bf']
+    >>> chord('bf', 'Mm7')
+    ['bf', 'd', 'f', 'af']
+    """
     # is the argument (one) a valid note?
     for index, note in enumerate(notes):
         if one in note:
