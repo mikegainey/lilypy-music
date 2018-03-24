@@ -39,13 +39,14 @@ def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5", rhythm="8 8
         note = int(note) # can only handle 1 ","
         if note >= 8:
             note -= 7
-            if octmod == ",":
-                octmod = ""
-            else:
-                octmod += "'"
+            # if octmod == ",":
+            #     octmod = ""
+            # else:
+            #     octmod += "'"
 
         outnote = chord_scale[note - 1]
         outnote = modnote(outnote, pitchmod)
         outnote = outnote + octmod + r
         outpat.append(outnote)
-        print(outpat)
+
+    print(" ".join(outpat))
