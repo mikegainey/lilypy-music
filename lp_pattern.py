@@ -11,7 +11,7 @@ keys = ['c', 'f', 'bf', ...]
 "df ef f gb af f ef df"
 """
 from lp_scale import scale
-from lp_modnote import modnote
+from lp_accidental import accidental
 
 def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5",
             rhythm="8 8 8 8  8 8 8 8", text="", reset_octave=False):
@@ -43,7 +43,7 @@ def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5",
             note -= 7
 
         outnote = chord_scale[note - 1]
-        outnote = modnote(outnote, pitchmod)
+        outnote = accidental(outnote, pitchmod)
 
         if first_note == False or reset_octave == False:
             outnote = outnote + octmod + r
