@@ -1,23 +1,23 @@
 """
->>> modnote("cff", "#")
+>>> accidental("cff", "#")
 'cf'
->>> modnote("cf", "#")
+>>> accidental("cf", "#")
 'c'
->>> modnote("c", "#")
+>>> accidental("c", "#")
 'cs'
->>> modnote("cs", "#")
+>>> accidental("cs", "#")
 'css'
->>> modnote("css", "b")
+>>> accidental("css", "b")
 'cs'
->>> modnote("cs", "b")
+>>> accidental("cs", "b")
 'c'
->>> modnote("c", "b")
+>>> accidental("c", "b")
 'cf'
->>> modnote("cf", "b")
+>>> accidental("cf", "b")
 'cff'
 """
 
-def modnote(note, mod): # the note and modifier (b or #)
+def accidental(note, mod): # the note and modifier (b or #)
     if mod not in ("b", "#"):
         return note
 
