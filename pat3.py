@@ -3,7 +3,7 @@
 Then compile the file:
    $ lilypond name.ly
 """
-from lp_pattern import pattern
+from lilypy.lp_pattern import pattern
 
 print("""\\version "2.18.0"
 \\language "english"

@@ -10,8 +10,8 @@ keys = ['c', 'f', 'bf', ...]
 >>> pattern("c", b2, "1 2 3 4  5 3 2 1")
 "df ef f gb af f ef df"
 """
-from lp_scale import scale
-from lp_accidental import accidental
+from lilypy.lp_scale import scale
+from lilypy.lp_accidental import accidental
 
 def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5",
             rhythm="8 8 8 8  8 8 8 8", text="", reset_octave=False):
@@ -44,14 +44,12 @@ def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5",
 
         outnote = chord_scale[note - 1]
         outnote = accidental(outnote, pitchmod)
-
-        if first_note == False or reset_octave == False:
-            outnote = outnote + octmod + r
-        else:
-            outnote = outnote + "='" + octmod + r
+        outnote = outnote + octmod + r
 
         outpat.append(outnote)
         first_note = False
 
     outpat[0] = outpat[0] + text
+    if reset_octave == True:
+        outpat.insert(0, """\octaveCheck c'""")
     print(" ".join(outpat))
