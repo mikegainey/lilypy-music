@@ -13,11 +13,13 @@ keys = ['c', 'f', 'bf', ...]
 from lp_scale import scale
 from lp_modnote import modnote
 
-def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5", rhythm="8 8 8 8  8 8 8 8"):
+def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5",
+            rhythm="8 8 8 8  8 8 8 8", text="", reset_octave=False):
     key_scale = scale(key)                   # the scale of the key
     chord_root = key_scale[scale_degree - 1] # the chord root
     chord_scale = scale(chord_root)          # the (major) scale of the chord
-    outpat = []                    #chord_scale modified according to pattern
+    outpat = []                              # chord_scale modified according to pattern
+    first_note = True
     for n, r in zip(pattern.split(), rhythm.split()):
         note = n # note will mutate
         if note == "r": # a rest
@@ -39,14 +41,17 @@ def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5", rhythm="8 8
         note = int(note) # can only handle 1 ","
         if note >= 8:
             note -= 7
-            # if octmod == ",":
-            #     octmod = ""
-            # else:
-            #     octmod += "'"
 
         outnote = chord_scale[note - 1]
         outnote = modnote(outnote, pitchmod)
-        outnote = outnote + octmod + r
-        outpat.append(outnote)
 
+        if first_note == False or reset_octave == False:
+            outnote = outnote + octmod + r
+        else:
+            outnote = outnote + "='" + octmod + r
+
+        outpat.append(outnote)
+        first_note = False
+
+    outpat[0] = outpat[0] + text
     print(" ".join(outpat))
