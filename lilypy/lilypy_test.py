@@ -7,6 +7,7 @@ from .mode import mode
 from .chord import chord
 from .accidental import accidental
 from .pattern import pattern
+from .scale_degree import scale_degree
 
 # these tests fail because of octave tweaks to lp_pattern
 # def test_pattern():
@@ -36,3 +37,10 @@ def test_accidental():
     assert accidental('bss', 'b') == 'bs'
     assert accidental('bf', 'b') == 'bff'
 
+def test_scale_degree():
+    assert scale_degree('c', 5) == 'g'
+    assert scale_degree('a', 3) == 'cs'
+    assert scale_degree('c', '4') == 'f'
+    assert scale_degree('ef', '4') == 'af'
+    assert scale_degree('c', '#4') == 'fs'
+    assert scale_degree('bf', 'b5') == 'ff'
