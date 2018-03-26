@@ -3,7 +3,6 @@
 \relative c'{
 \set Staff.extraNatural = ##f
 
-
 % key of c:
 \octaveCheck c'
 c8^"key of c" d8 e8 f8 g8 f8 e8 d8

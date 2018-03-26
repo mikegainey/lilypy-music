@@ -5,14 +5,13 @@ Then compile the file:
 $ lilypond name.ly
 """
 from lilypy.pattern import pattern
+from lilypy.header import header, footer
 
-print("""\\version "2.18.0"
-\\language "english"
-\\relative c' {""")
+print(header)
 
 rhythm = "8 8 8 8  8 8 8 8"
 for key in ["ef", "af", "df", "gf", "b", "e" ,"a", "d", "g", "c", "f", "bf"]:
-    print(f"% key of {key}:")
+    print(f"\n% key of {key}:")
     pattern(key, 2, "1 2 b3 5", rhythm, text=f'^"key of {key}"', reset_octave=True)
     pattern(key, 5, "4 #2 3 2", rhythm)
     pattern(key, 3, "b3 4 5 b7", rhythm)
@@ -21,6 +20,5 @@ for key in ["ef", "af", "df", "gf", "b", "e" ,"a", "d", "g", "c", "f", "bf"]:
     pattern(key, 5, "6 5 3 2", rhythm)
     pattern(key, 1, "5 3 4 5", rhythm)
     pattern(key, 1, "5", rhythm="2")
-    print()
 
-print("}\n")
+print(footer)

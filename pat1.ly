@@ -1,6 +1,8 @@
 \version "2.18.0"
 \language "english"
-\relative c' {
+\relative c'{
+\set Staff.extraNatural = ##f
+
 % key of ef:
 \octaveCheck c'
 f8^"key of ef" g8 af8 c8
@@ -132,6 +134,5 @@ ef8 f8 g8 bf8
 d8 c8 a8 g8
 f8 d8 ef8 f8
 f2
-
 }
 

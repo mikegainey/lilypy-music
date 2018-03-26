@@ -4,12 +4,9 @@ Then compile the file:
    $ lilypond pat2.ly
 """
 from lilypy.pattern import pattern
+from lilypy.header import header, footer
 
-print("""\\version "2.18.0"
-\\language "english"
-\\relative c'{
-\set Staff.extraNatural = ##f
-""")
+print(header)
 
 rhythm = "8 8 8 8  8 8 8 8"
 for key in ["ef", "af", "df", "gf", "b", "e" ,"a", "d", "g", "c", "f", "bf"]:
@@ -23,4 +20,4 @@ for key in ["ef", "af", "df", "gf", "b", "e" ,"a", "d", "g", "c", "f", "bf"]:
     pattern(key, 1, "2 3 4 2  7 1 2 7", rhythm)
     pattern(key, 1, "1 3 2 1  2 4 3 2", rhythm)
 
-print("}\n")
+print(footer)
