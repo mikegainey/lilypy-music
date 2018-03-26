@@ -10,8 +10,8 @@ keys = ['c', 'f', 'bf', ...]
 >>> pattern("c", b2, "1 2 3 4  5 3 2 1")
 "df ef f gb af f ef df"
 """
-from lilypy.lp_scale import scale
-from lilypy.lp_accidental import accidental
+from lilypy.scale import scale
+from lilypy.accidental import accidental
 
 def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5",
             rhythm="8 8 8 8  8 8 8 8", text="", reset_octave=False):

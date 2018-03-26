@@ -1,11 +1,11 @@
 # pytest test suite
 # usage: $pytest-3 -v (to run all tests in this directory)
 
-from lp_scale import scale
-from lp_mode import mode
-from lp_chord import chord
-from lp_accidental import accidental
-from lp_pattern import pattern
+from scale import scale
+from mode import mode
+from chord import chord
+from accidental import accidental
+from pattern import pattern
 
 # these tests fail because of octave tweaks to lp_pattern
 # def test_pattern():
