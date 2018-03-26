@@ -10,15 +10,15 @@ keys = ['c', 'f', 'bf', ...]
 >>> pattern("c", b2, "1 2 3 4  5 3 2 1")
 "df ef f gb af f ef df"
 """
-from lilypy.scale import scale
-from lilypy.accidental import accidental
+from .scale import scale
+from .accidental import accidental
 
-def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5",
+def pattern(key="c", scale_degree=1, pattern="1 2 3 4  5 4 3 2",
             rhythm="8 8 8 8  8 8 8 8", text="", reset_octave=False):
     key_scale = scale(key)                   # the scale of the key
     chord_root = key_scale[scale_degree - 1] # the chord root
     chord_scale = scale(chord_root)          # the (major) scale of the chord
-    outpat = []                              # chord_scale modified according to pattern
+    outpat = []                              # pattern using chord_scale
     first_note = True
     for n, r in zip(pattern.split(), rhythm.split()):
         note = n # note will mutate
@@ -51,5 +51,6 @@ def pattern(key="c", scale_degree=2, pattern="1 b3' r 8  #6 9 b3 5",
 
     outpat[0] = outpat[0] + text
     if reset_octave == True:
-        outpat.insert(0, """\octaveCheck c'""")
+        # outpat.insert(0, """\octaveCheck c'""")
+        print("\octaveCheck c'")
     print(" ".join(outpat))

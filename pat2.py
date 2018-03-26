@@ -1,9 +1,9 @@
 """To create a lilypond source file, redirect printed output to a name.ly file:
-   $ python3 pat1.py > pat1.ly
+   $ python3 pat2.py > pat2.ly
 Then compile the file:
-   $ lilypond name.ly
+   $ lilypond pat2.ly
 """
-from lilypy.lp_pattern import pattern
+from lilypy.pattern import pattern
 
 print("""\\version "2.18.0"
 \\language "english"
