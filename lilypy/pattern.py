@@ -10,17 +10,17 @@ keys = ['c', 'f', 'bf', ...]
 >>> pattern("c", b2, "1 2 3 4  5 3 2 1")
 "df ef f gb af f ef df"
 """
-from .scale import scale
-from .accidental import accidental
+from .scale import scale # scale('a') == ['a', 'b', 'cs', 'd', 'e', 'fs', 'gs', 'a']
+from .accidental import accidental # accidental('c', '#') == 'cs'
+from .scale_degree import scale_degree # scale_degree('c', '#4') == 'fs'
 
-def pattern(key="c", scale_degree=1, pattern="1 2 3 4  5 4 3 2",
+def pattern(key="c", scale_deg=1, pattern="1 2 3 4  5 4 3 2",
             rhythm="8 8 8 8  8 8 8 8", text="", reset_octave=False):
-    key_scale = scale(key)                   # the scale of the key
-    chord_root = key_scale[scale_degree - 1] # the chord root
-    chord_scale = scale(chord_root)          # the (major) scale of the chord
-    outpat = []                              # pattern using chord_scale
+    chord_root = scale_degree(key, scale_deg) # the chord root
+    chord_scale = scale(chord_root)           # the (major) scale of the chord
+    outpat = []                               # pattern using chord_scale
     first_note = True
-    for n, r in zip(pattern.split(), rhythm.split()):
+    for n, r in zip(pattern.split(), rhythm.split()): # zip limits pattern length to 8
         note = n # note will mutate
         if note == "r": # a rest
             outpat.append("r")
