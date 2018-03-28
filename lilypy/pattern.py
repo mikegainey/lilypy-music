@@ -1,26 +1,26 @@
 """
 keys = ['c', 'f', 'bf', ...]
 
->>> pattern(key="c", scale_degree=2, pattern="1 b3 r 8  #6 5 b3 5", rhythm="8 8 8 8 8 8 8 8")
-"d f a d b a f a"
->>> pattern("c", 5, "1 3 5 b7  8 9 8 b7")
-"g b d f  g a g f"
->>> pattern("c", 1, "1 8' 2, 3  5 r b3 3")
-"c c' d, e g a ef e"
->>> pattern("c", b2, "1 2 3 4  5 3 2 1")
-"df ef f gb af f ef df"
+>>> pattern('d', 1, '1 3 5 7  6 4 2 1')
+d8 fs8 a8 cs8 b8 g8 e8 d8
+>>> pattern('ef', 2, '1 2 b3 4 5 b3 2 1')
+f8 g8 af8 bf8 c8 af8 g8 f8
+>>> pattern('c','b2', '1 2 3 4 5 4 3 2 1')
+df8 ef8 f8 gf8 af8 gf8 f8 ef8
+>>> pattern('c', 5, '1 b2 #2 3 5 b7 b5 3')
+g8 af8 as8 b8 d8 f8 df8 b8
 """
 from .scale import scale # scale('a') == ['a', 'b', 'cs', 'd', 'e', 'fs', 'gs', 'a']
 from .accidental import accidental # accidental('c', '#') == 'cs'
 from .scale_degree import scale_degree # scale_degree('c', '#4') == 'fs'
 
-def pattern(key="c", scale_deg=1, pattern="1 2 3 4  5 4 3 2",
+def pattern(key="c", degree=1, pattern="1 2 3 4  5 4 3 2",
             rhythm="8 8 8 8  8 8 8 8", text="", reset_octave=False):
-    chord_root = scale_degree(key, scale_deg) # the chord root
-    chord_scale = scale(chord_root)           # the (major) scale of the chord
-    outpat = []                               # pattern using chord_scale
+    chord_root = scale_degree(key, degree) # the chord root
+    chord_scale = scale(chord_root)        # the (major) scale of the chord
+    outpat = []                            # pattern using chord_scale
     first_note = True
-    for n, r in zip(pattern.split(), rhythm.split()): # zip limits pattern length to 8
+    for n, r in zip(pattern.split(), rhythm.split()): # zip limits pattern length to 8 (not good)
         note = n # note will mutate
         if note == "r": # a rest
             outpat.append("r")
@@ -53,4 +53,6 @@ def pattern(key="c", scale_deg=1, pattern="1 2 3 4  5 4 3 2",
     if reset_octave == True:
         # outpat.insert(0, """\octaveCheck c'""")
         print("\octaveCheck c'")
-    print(" ".join(outpat))
+    output = " ".join(outpat)
+    print(output) # the real output
+    return output # for pytest-3 tests
