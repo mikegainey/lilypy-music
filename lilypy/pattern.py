@@ -14,44 +14,35 @@ from .scale import scale # scale('a') == ['a', 'b', 'cs', 'd', 'e', 'fs', 'gs', 
 from .accidental import accidental # accidental('c', '#') == 'cs'
 from .scale_degree import scale_degree # scale_degree('c', '#4') == 'fs'
 
+import re
+oct_re = re.compile(r"[',]+") # regex that matches octave modifiers
+
 def pattern(key="c", degree=1, pattern="1 2 3 4  5 4 3 2",
             rhythm="8 8 8 8  8 8 8 8", text="", reset_octave=False):
     chord_root = scale_degree(key, degree) # the chord root
-    chord_scale = scale(chord_root)        # the (major) scale of the chord
-    outpat = []                            # pattern using chord_scale
-    first_note = True
-    for n, r in zip(pattern.split(), rhythm.split()): # zip limits pattern length to 8 (not good)
-        note = n # note will mutate
-        if note == "r": # a rest
-            outpat.append("r")
+    outpat = []
+    for deg, dur in zip(pattern.split(), rhythm.split()): # zip limits pattern length to 8 (not good)
+        degree = deg # degree will mutate
+
+        # handle rests
+        if degree == "r": # a rest
+            outpat.append(f"{degree}{dur}")
             continue
 
-        if note[-1] in "',": # can only handle 1 octave modifier
-            octmod = note[-1]
-            note = note[:-1]
+        # find octave modifiers: ' or , (including multiple)
+        octfound = oct_re.search(degree)
+        if octfound:
+            octmod = octfound.group()
+            degree = degree.strip("',")
         else:
             octmod = ""
 
-        if note[0] in "#b": # can only handle 1 sharp or flat
-            pitchmod = note[0]
-            note = note[1:]
-        else:
-            pitchmod = "na"
-
-        note = int(note) # can only handle 1 ","
-        if note >= 8:
-            note -= 7
-
-        outnote = chord_scale[note - 1]
-        outnote = accidental(outnote, pitchmod)
-        outnote = outnote + octmod + r
-
+        pitch = scale_degree(chord_root, degree)
+        outnote = pitch + octmod + dur
         outpat.append(outnote)
-        first_note = False
 
     outpat[0] = outpat[0] + text
     if reset_octave == True:
-        # outpat.insert(0, """\octaveCheck c'""")
         print("\octaveCheck c'")
     output = " ".join(outpat)
     print(output) # the real output

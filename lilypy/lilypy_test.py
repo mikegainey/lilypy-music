@@ -46,7 +46,7 @@ def test_scale_degree():
     assert scale_degree('bf', 'b5') == 'ff'
 
 def test_pattern():
-    assert pattern('d', 1, '1 3 5 7  6 4 2 1') == 'd8 fs8 a8 cs8 b8 g8 e8 d8'
-    assert pattern('ef', 2, '1 2 b3 4 5 b3 2 1') == 'f8 g8 af8 bf8 c8 af8 g8 f8'
-    assert pattern('c','b2', '1 2 3 4 5 4 3 2 1') == 'df8 ef8 f8 gf8 af8 gf8 f8 ef8'
-    assert pattern('c', 5, '1 b2 #2 3 5 b7 b5 3') == 'g8 af8 as8 b8 d8 f8 df8 b8'
+    assert pattern("d", 1, "1 3, 5' 7  6,, 4'' r 1") == "d8 fs,8 a'8 cs8 b,,8 g''8 r8 d8"
+    assert pattern("ef", 2, "1 2 b3 4 5 b3 2 1") == "f8 g8 af8 bf8 c8 af8 g8 f8"
+    assert pattern("c","b2", "1 2 3 #4'' 5 4 3 b2") == "df8 ef8 f8 g''8 af8 gf8 f8 eff8"
+    assert pattern("c", 5, "1 b2 #2 3 5 b7 b5 3") == "g8 af8 as8 b8 d8 f8 df8 b8"
