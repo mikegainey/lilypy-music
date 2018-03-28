@@ -14,16 +14,24 @@ oct_re = re.compile(r"[',]+") # regex that matches octave modifiers
 def pattern(key="c", degree=1, pattern="1 2 3 4  5 4 3 2",
             rhythm="8 8 8 8  8 8 8 8", text="", reset_octave=False):
     chord_root = scale_degree(key, degree) # the chord root
+    patternlist = pattern.split()
+    rhythmlist = rhythm.split()
     outputlist = []
-    for deg, dur in zip(pattern.split(), rhythm.split()): # zip limits pattern length to 8 (not good)
+    for index, deg in enumerate(patternlist):
         degree = deg # degree will mutate
+
+        # dur == duration of the current note
+        if index < len(rhythmlist):
+            dur = rhythmlist[index]
+        else:
+            dur = ""
 
         # handle rests
         if degree == "r":
             outputlist.append(f"{degree}{dur}")
             continue
 
-        # find octave modifiers: ' or , (including multiple)
+        # find octave modifiers: ' or ,
         octfound = oct_re.search(degree)
         if octfound:
             octmod = octfound.group()
@@ -32,8 +40,8 @@ def pattern(key="c", degree=1, pattern="1 2 3 4  5 4 3 2",
             octmod = ""
 
         pitch = scale_degree(chord_root, degree)
-        outnote = f"{pitch}{octmod}{dur}"
-        outputlist.append(outnote)
+        lilynote = f"{pitch}{octmod}{dur}"
+        outputlist.append(lilynote)
 
     if text:
         outputlist[0] = f"{outputlist[0]}^{text}"
