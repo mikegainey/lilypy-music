@@ -1,18 +1,18 @@
 # Given a root note (like 'c') and a scale degree (like b5), return the note (in this case, gf).
 # Uses scale.py and accidental.py
-"""
->>> scale_degree('c','b5')
-'gf'
->>> scale_degree('d','3')
-'fs'
->>> scale_degree('ef','b7')
-'df'
-"""
 
 from .scale import scale
 from .accidental import accidental
 
 def scale_degree(note, degree):
+   """
+   >>> scale_degree('c','b5')
+   'gf'
+   >>> scale_degree('d','3')
+   'fs'
+   >>> scale_degree('ef','b7')
+   'df'
+   """
    key_scale = scale(note)
    # degree is an int
    if type(degree) == int:

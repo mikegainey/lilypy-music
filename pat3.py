@@ -8,10 +8,9 @@ from lilypy.header import header, footer
 
 print(header)
 
-rhythm = "8 8 8 8  8 8 8 8"
 for key in ["c", "f", "bf", "ef", "af", "df", "gf", "b", "e" ,"a", "d", "g"]:
     print(f"\n% key of {key}:")
-    pattern(key, 1, "1 2 3 4  5 4 3 2", rhythm, text=f'"key of {key}"', reset_octave=True)
-    pattern(key, 1, "1 3 5 8  7 5 4 2", rhythm)
+    pattern(key, 1, "1 2 3 4  5 4 3 2", text=f'key of {key}', reset_octave=True)
+    pattern(key, 1, "1 3 5 8  7 5 4 2")
 
 print(footer)
