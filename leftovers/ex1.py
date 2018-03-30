@@ -12,16 +12,16 @@ music += ('''\\language "english"\n''')
 
 music += "{\n"
 
-for s in scale_list:                # s = current scale
-    note_list = pyscale.scale(s)    # s_list = list of notes in the scale
-    topoct = False                  # change octaves after note b
-    for note in note_list:          # the note in the scale
+for s in scale_list:  # s = current scale
+    note_list = pyscale.scale(s)  # s_list = list of notes in the scale
+    topoct = False  # change octaves after note b
+    for note in note_list:  # the note in the scale
         if topoct is False:
-            music += note + "' "   #
+            music += note + "' "  #
             if note[0] == 'b':
                 topoct = True
         else:
-            music += note + "'' "    # build the string
+            music += note + "'' "  # build the string
     music += "\n"
 
 music += '}'

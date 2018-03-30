@@ -1,18 +1,18 @@
-from .scale import scale # scale('a') == ['a', 'b', 'cs', 'd', 'e', 'fs', 'gs', 'a']
-from .accidental import accidental # accidental('c', '#') == 'cs'
-from .scale_degree import scale_degree # scale_degree('c', '#4') == 'fs'
+from .scale import scale  # scale('a') == ['a', 'b', 'cs', 'd', 'e', 'fs', 'gs', 'a']
+from .accidental import accidental  # accidental('c', '#') == 'cs'
+from .scale_degree import scale_degree  # scale_degree('c', '#4') == 'fs'
 
 import re
-oct_re = re.compile(r"[',]+") # regex that matches octave modifiers
+oct_re = re.compile(r"[',]+")  # regex that matches octave modifiers
 
-def pattern(key="c", degree=1, pattern="1 2 3 4  5 4 3 2",
-            rhythm="8", text="", reset_octave=False):
-    chord_root = scale_degree(key, degree) # the chord root
+
+def pattern(key="c", degree=1, pattern="1 2 3 4  5 4 3 2", rhythm="8", text="", reset_octave=False):
+    chord_root = scale_degree(key, degree)  # the chord root
     patternlist = pattern.split()
     rhythmlist = rhythm.split()
     outputlist = []
     for index, deg in enumerate(patternlist):
-        degree = deg # degree will mutate
+        degree = deg  # degree will mutate
 
         # dur == duration of the current note
         if index < len(rhythmlist):
@@ -44,5 +44,5 @@ def pattern(key="c", degree=1, pattern="1 2 3 4  5 4 3 2",
         print("\octaveCheck c'")
 
     output = " ".join(outputlist)
-    print(output) # the real output
-    return output # only used for pytest-3 tests
+    print(output)  # the real output
+    return output  # only used for pytest-3 tests

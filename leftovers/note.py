@@ -1,14 +1,15 @@
 class Note:
 
     letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g')
-    absolute_pitch = "c'" # the default starting pitch for relative mode
-                          # then, the absolute pitch of the last Note
+    absolute_pitch = "c'"  # the default starting pitch for relative mode
+
+    # then, the absolute pitch of the last Note
 
     def __init__(self, letter, accidental='', change_octave='', duration='8'):
-        self.letter = letter # r = rest
+        self.letter = letter  # r = rest
         self.accidental = accidental
         self.change_octave = change_octave
-        self.duration = duration # 8 = eighth note
+        self.duration = duration  # 8 = eighth note
         self.abs_pitch = ""
 
         # update the absolute_pitch
@@ -25,7 +26,6 @@ class Note:
             print(f"down {7 - diff}")
 
         Note.absolute_pitch = self.letter
-
 
     def __str__(self):
         return f"{self.letter}{self.accidental} {self.change_octave}"

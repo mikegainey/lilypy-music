@@ -3,6 +3,7 @@
 # assume the smaller interval (2nd instead of 7th, 3rd instead of 6th, 4th instead of 5th)
 # diff_oct1 and diff_oct2 are alternate implementations that do the same thing and both work
 
+
 def diff_oct1(fst, snd):
     letters = list("abcdefg")
     fstx = letters.index(fst)
@@ -52,12 +53,12 @@ def diff_oct2(fst, snd):
             else:
                 return "down but not to a new octave"
         else:
-            if sndx >= 2: # e up to a
+            if sndx >= 2:  # e up to a
                 return "up oct"
             else:
                 return "up but not to a new octave"
-    else: # diff == 0
-        return("repeated note")
+    else:  # diff == 0
+        return ("repeated note")
 
 
 # 0 1 2 3 4 5 6
@@ -68,4 +69,3 @@ for fst in letters:
     for snd in letters:
         print(f"{fst} to {snd} : {oct2(fst, snd)}")
     input()
-

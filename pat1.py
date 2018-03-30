@@ -9,7 +9,7 @@ from lilypy.header import header, footer
 
 print(header)
 
-for key in ["ef", "af", "df", "gf", "b", "e" ,"a", "d", "g", "c", "f", "bf"]:
+for key in ["ef", "af", "df", "gf", "b", "e", "a", "d", "g", "c", "f", "bf"]:
     print(f"\n% key of {key}:")
     pattern(key, 2, "1 2 b3 5", text=f'key of {key}', reset_octave=True)
     pattern(key, 5, "4 #2 3 2")
