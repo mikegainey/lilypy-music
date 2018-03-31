@@ -1,22 +1,23 @@
+"""
+>>> accidental("cff", "#")
+'cf'
+>>> accidental("cf", "#")
+'c'
+>>> accidental("c", "#")
+'cs'
+>>> accidental("cs", "#")
+'css'
+>>> accidental("css", "b")
+'cs'
+>>> accidental("cs", "b")
+'c'
+>>> accidental("c", "b")
+'cf'
+>>> accidental("cf", "b")
+'cff'
+"""
+
 def accidental(note, modifier):  # the note and modifier (b or #)
-    """
-    >>> accidental("cff", "#")
-    'cf'
-    >>> accidental("cf", "#")
-    'c'
-    >>> accidental("c", "#")
-    'cs'
-    >>> accidental("cs", "#")
-    'css'
-    >>> accidental("css", "b")
-    'cs'
-    >>> accidental("cs", "b")
-    'c'
-    >>> accidental("c", "b")
-    'cf'
-    >>> accidental("cf", "b")
-    'cff'
-    """
     if modifier not in ("b", "#"):
         return note
 

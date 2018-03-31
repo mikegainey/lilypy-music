@@ -7,34 +7,33 @@ oct_re = re.compile(r"[',]+")  # regex that matches octave modifiers
 
 
 def pattern(key="c", degree=1, pattern="1 2 3 4  5 4 3 2", rhythm="8", text="", reset_octave=False):
-    chord_root = scale_degree(key, degree)  # the chord root
+    chord_root = scale_degree(key, degree)
     patternlist = pattern.split()
     rhythmlist = rhythm.split()
     outputlist = []
-    for index, deg in enumerate(patternlist):
-        degree = deg  # degree will mutate
+    for index, note in enumerate(patternlist):
 
-        # dur == duration of the current note
         if index < len(rhythmlist):
-            dur = rhythmlist[index]
+            duration = rhythmlist[index]
         else:
-            dur = ""
+            duration = ""
 
         # handle rests
-        if degree == "r":
-            outputlist.append(f"{degree}{dur}")
+        if note == "r":
+            outputlist.append(f"{note}{duration}")
             continue
 
         # find octave modifiers: ' or ,
-        octfound = oct_re.search(degree)
+        octfound = oct_re.search(note)
         if octfound:
             octmod = octfound.group()
-            degree = degree.strip("',")
+            degree = note.strip("',")
         else:
             octmod = ""
+            degree = note
 
         pitch = scale_degree(chord_root, degree)
-        lilynote = f"{pitch}{octmod}{dur}"
+        lilynote = f"{pitch}{octmod}{duration}"
         outputlist.append(lilynote)
 
     if text:
